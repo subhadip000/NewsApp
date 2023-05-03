@@ -1,14 +1,16 @@
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React, { useState } from 'react'
-import { useTheme, Appbar, Chip, Button, ActivityIndicator, MD2Colors, ProgressBar } from 'react-native-paper';
+import {  Appbar, Chip, Button, ActivityIndicator, MD2Colors, ProgressBar   } from 'react-native-paper';
 import CardItem from '../components/CardItem';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useTheme } from '../context/Context';
 
 const categories = ["Business", "Entertainment", "Environment", "Food", "Health",
     "Politics", "Science", "Sports", "Technology", "Tourism", "Top"];
 
 const API_KEY = "pub_2104898db410596e2c2bfe1440d0cf1d69731";
 
-export default function Home({ navigation }) {
+export default function Home({ navigation, route }) {
     const [newsData, setNewsData] = useState([]);
     const [selectedCat, setSelectedCat] = useState([]);
     const [nextPage, setNextPage] = useState("");
@@ -40,11 +42,15 @@ export default function Home({ navigation }) {
             console.log(error);
         }
     }
-
+    // const { setIsDarkMode } = route.params;
+    const { setIsDarkMode, theme } = useTheme()
     return (
-        <View style={styles.container}>
-            <Appbar.Header>
+        <View style={[styles.container, {backgroundColor: theme.colors.elevation.level1}]}>
+            <Appbar.Header style={{backgroundColor: theme.colors.elevation.level5}}>
                 <Appbar.Content title="Home"></Appbar.Content>
+                <Appbar.Action icon="theme-light-dark" onPress={() => {
+                    setIsDarkMode((e)=>!e)
+                }} />
             </Appbar.Header>
             <Button
                 icon="filter"

@@ -4,10 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Home from './Home'
 import SavedNews from './SavedNews'
+import { Button } from 'react-native-paper';
 
 const Tab = createBottomTabNavigator();
 
 export default function HomeScreen() {
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -15,7 +17,7 @@ export default function HomeScreen() {
           let iconName;
           if (route.name === 'Home') {
             iconName = 'home';
-          } 
+          }
           else if (route.name === 'Saved') {
             iconName = 'bookmarks';
           }

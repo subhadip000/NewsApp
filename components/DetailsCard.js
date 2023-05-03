@@ -1,9 +1,10 @@
 import { Dimensions, ScrollView, View } from 'react-native'
 import React from 'react'
-import { Card, Text, useTheme } from 'react-native-paper'
+import { Card, Text } from 'react-native-paper'
+import { useTheme } from '../context/Context';
 
 export default function DetailsCard(props) {
-    const theme = useTheme();
+    const {theme} = useTheme();
 
     return (
         <ScrollView>

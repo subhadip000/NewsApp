@@ -9,7 +9,8 @@ import NewsOverviewScreen from '../screens/NewsOverviewScreen';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export default function Navigator() {
+export default function Navigator({ setIsDarkMode }) {
+
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -17,9 +18,13 @@ export default function Navigator() {
             // initialRouteName='NewsOverviewScreen'
             >
                 <Stack.Screen
-                    options={{ headerShown: false }}
                     name="HomeScreen"
-                    component={HomeScreen} />
+                    component={HomeScreen}
+                    options={{
+                        headerShown: false,
+                        
+                    }}
+                />
                 <Stack.Screen
                     name="NewsOverviewScreen"
                     component={NewsOverviewScreen} />

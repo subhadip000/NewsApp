@@ -1,10 +1,12 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native'
 import React from 'react'
-import { Button, Card, useTheme } from 'react-native-paper'
+import { Button, Card } from 'react-native-paper'
+import { useTheme } from '../context/Context';
 
 export default function CardItem(props) {
 
-  const theme = useTheme();
+  const {theme} = useTheme();
+  // console.log("theme call", theme);
   // console.log(props.image_url);
   const handlePress = () => {
     props.navigation.navigate('NewsOverviewScreen', {

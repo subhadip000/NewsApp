@@ -4,6 +4,7 @@ import { Appbar } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useIsFocused } from '@react-navigation/native';
 import CardItem from '../components/CardItem';
+import { useTheme } from '../context/Context';
 
 const getData = async () => {
     try {
@@ -45,9 +46,10 @@ export default function SavedNews(props) {
         getData().then((data) => setSavedNews(data))
     }, [focused, deleteHandler])
 
+    const { theme } = useTheme()
     return (
-        <View style={styles.container}>
-            <Appbar.Header>
+        <View style={[styles.container, {backgroundColor: theme.colors.elevation.level1}]}>
+            <Appbar.Header style={{backgroundColor: theme.colors.elevation.level5}}>
                 <Appbar.Content title="Saved"></Appbar.Content>
             </Appbar.Header>
 
